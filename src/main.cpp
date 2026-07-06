@@ -1,18 +1,20 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+// Simple LED blink test for esp32-c6-dev-1
+// Adjust LED_PIN if your board uses a different pin for the on-board LED.
+
+const int LED_PIN = 2; // common on many ESP32 dev boards; change if needed
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);
+  delay(50);
+  pinMode(LED_PIN, OUTPUT);
+  Serial.println("LED blink test starting");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  digitalWrite(LED_PIN, HIGH);
+  delay(500);
+  digitalWrite(LED_PIN, LOW);
+  delay(500);
 }
